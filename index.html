@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nova Group – word beginnend salesmedewerker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E7ECF1; --surface:#FFFFFF; --surface-2:#F2F5F8; --ink:#172033; --muted:#56617A; --line:#CCD5DF;
+  --cobalt:#2743C8; --cobalt-ink:#FFFFFF; --badge:#FFC43D; --badge-ink:#2A2100;
+  --ok:#157A51; --ok-bg:#E1F3EA; --bad:#B3372A; --bad-bg:#FBE6E2; --info-bg:#E9EDFC;
+  --display:#101624;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F141D; --surface:#182030; --surface-2:#1E2739; --ink:#E6EBF4; --muted:#A4AFC4; --line:#313C51;
+    --cobalt:#8199FF; --cobalt-ink:#0C1224; --badge:#FFCB52; --badge-ink:#2A2100;
+    --ok:#5DD39D; --ok-bg:#15301F; --bad:#FF8B7A; --bad-bg:#3A1C18; --info-bg:#1D2745;
+    --display:#070A10; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F141D; --surface:#182030; --surface-2:#1E2739; --ink:#E6EBF4; --muted:#A4AFC4; --line:#313C51;
+  --cobalt:#8199FF; --cobalt-ink:#0C1224; --badge:#FFCB52; --badge-ink:#2A2100;
+  --ok:#5DD39D; --ok-bg:#15301F; --bad:#FF8B7A; --bad-bg:#3A1C18; --info-bg:#1D2745;
+  --display:#070A10; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+h1,h2,h3,.disp{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.12;letter-spacing:-0.012em;margin:0}
+h1{font-size:clamp(2rem,5.5vw,3.1rem);font-weight:800}
+h2{font-size:1.6rem;font-weight:700;margin:2.6rem 0 1rem}
+h3{font-size:1.2rem;font-weight:700;margin:1.6rem 0 .5rem}
+p{margin:.6rem 0}
+a{color:var(--cobalt)}
+img{max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:2px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1040px;margin:0 auto;padding:.9rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font:800 1.35rem/1 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.45rem}
+.brand i{width:.8rem;height:.8rem;background:var(--badge);display:inline-block;border-radius:2px;transform:rotate(45deg)}
+.mini{display:flex;align-items:center;gap:.6rem;min-width:0}
+.mini-init{width:2.2rem;height:2.2rem;border-radius:50%;background:var(--cobalt);color:var(--cobalt-ink);display:grid;place-items:center;font:700 .9rem "Bricolage Grotesque",sans-serif;flex:none}
+.mini-txt{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.mini-txt strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-txt span{font-size:.82rem;color:var(--muted)}
+
+/* elevator panel */
+.lift{max-width:1040px;margin:0 auto;padding:.4rem 1.25rem 1rem;display:flex;align-items:flex-end;gap:1.1rem;overflow-x:auto}
+.lift-display{flex:none;background:var(--display);color:var(--badge);font:800 1.9rem/1 "Bricolage Grotesque",sans-serif;min-width:3.6rem;height:3.4rem;display:grid;place-items:center;border-radius:8px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.06);margin-bottom:1.35rem}
+.floor-btn{flex:none;background:none;border:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:.35rem;cursor:pointer;min-width:4.6rem}
+.knob{position:relative;width:3rem;height:3rem;border-radius:50%;border:2px solid var(--line);background:var(--surface-2);display:grid;place-items:center;font:700 1.15rem "Bricolage Grotesque",sans-serif;transition:background .15s,border-color .15s}
+.floor-btn:hover:not(:disabled) .knob{border-color:var(--cobalt)}
+.floor-btn[aria-current="page"] .knob{background:var(--cobalt);border-color:var(--cobalt);color:var(--cobalt-ink);box-shadow:0 0 0 4px var(--info-bg)}
+.floor-btn.done .knob::after{content:"";position:absolute;right:-3px;bottom:-3px;width:1.05rem;height:1.05rem;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.6 2.5L12 5.5' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/80% no-repeat;border:2px solid var(--surface)}
+.floor-btn:disabled{cursor:not-allowed;opacity:.42}
+.floor-lbl{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.floor-btn[aria-current="page"] .floor-lbl{color:var(--ink);font-weight:700}
+
+main{max-width:1040px;margin:0 auto;padding:1.5rem 1.25rem 3rem}
+.col{max-width:760px}
+
+/* lobby */
+.lobby{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:3rem;align-items:start;padding-top:1.5rem}
+.lobby .when{color:var(--muted);font-style:italic;margin:0 0 .6rem}
+.lobby h1{max-width:13ch}
+.lobby-intro{max-width:36rem;font-size:1.1rem}
+.field{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:flex-end}
+.field label{width:100%;font-weight:700}
+.field input{flex:1 1 14rem;min-width:0;font:inherit;padding:.75rem .9rem;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.field input:focus{border-color:var(--cobalt);outline:none}
+.err{color:var(--bad);min-height:1.4em;margin:.4rem 0 0}
+
+.badge-wrap{display:flex;flex-direction:column;align-items:center;padding-top:0}
+.strap{width:1.1rem;height:4.5rem;background:repeating-linear-gradient(180deg,var(--badge) 0 10px,#E8A91A 10px 12px);border-radius:0 0 3px 3px}
+.clip{width:2.4rem;height:1rem;border:3px solid var(--muted);border-top:0;border-radius:0 0 8px 8px;margin-top:-2px}
+.badge{width:min(100%,290px);background:var(--surface);border-radius:16px;border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(16,22,36,.45);overflow:hidden;transform-origin:50% -6rem;animation:swing 1.6s cubic-bezier(.3,.6,.3,1) both;margin-top:-4px}
+@keyframes swing{0%{transform:rotate(-9deg)}35%{transform:rotate(5deg)}60%{transform:rotate(-2.5deg)}80%{transform:rotate(1deg)}100%{transform:rotate(-1.5deg)}}
+.badge-band{background:var(--cobalt);color:var(--cobalt-ink);padding:1.4rem 1.2rem .9rem;position:relative;font:800 1.25rem/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;display:flex;gap:.45rem;align-items:center}
+.badge-band i{width:.75rem;height:.75rem;background:var(--badge);display:inline-block;border-radius:2px;transform:rotate(45deg)}
+.badge-band::before{content:"";position:absolute;top:.5rem;left:50%;width:3.2rem;height:.55rem;margin-left:-1.6rem;border-radius:99px;background:var(--bg)}
+.badge-body{padding:1.3rem 1.2rem 1.4rem}
+.badge-photo{width:5.2rem;height:5.2rem;border-radius:12px;background:var(--surface-2);border:2px dashed var(--line);display:grid;place-items:center;font:800 1.8rem "Bricolage Grotesque",sans-serif;color:var(--muted)}
+.badge-name{font:800 1.55rem/1.1 "Bricolage Grotesque",sans-serif;margin-top:1rem;word-break:break-word}
+.badge-role{color:var(--muted);margin-top:.25rem}
+.badge-meta{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.1rem 0 0;padding-top:.9rem;border-top:1px dashed var(--line);font-size:.85rem}
+.badge-meta dt{color:var(--muted)}
+.badge-meta dd{margin:0;font-weight:700}
+
+.plan{margin-top:3.5rem;max-width:760px}
+.plan ol{list-style:none;margin:0;padding:0;border-left:3px solid var(--line)}
+.plan li{position:relative;padding:.1rem 0 1.3rem 2.1rem}
+.plan li::before{content:attr(data-n);position:absolute;left:-1.05rem;top:0;width:1.85rem;height:1.85rem;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:grid;place-items:center;font:700 .9rem "Bricolage Grotesque",sans-serif}
+.plan li strong{display:block}
+.plan li span{color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.72rem 1.2rem;border-radius:8px;border:2px solid var(--cobalt);background:var(--cobalt);color:var(--cobalt-ink);font-weight:700;cursor:pointer;text-decoration:none;line-height:1.2}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--cobalt)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+
+/* floor page */
+.where{color:var(--muted);margin:0 0 .4rem}
+.role-line{font-size:1.1rem;margin-top:.8rem}
+.mail{margin-top:1.8rem;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--badge);border-radius:6px;overflow:hidden}
+.mail-head{padding:.8rem 1.2rem;background:var(--surface-2);border-bottom:1px solid var(--line);font-size:.92rem;display:grid;grid-template-columns:auto 1fr;gap:.15rem .8rem}
+.mail-head dt{color:var(--muted)}
+.mail-head dd{margin:0}
+.mail-body{padding:.6rem 1.2rem 1rem}
+.prose{max-width:68ch}
+.prose ul,.prose ol{padding-left:1.3rem}
+.prose li{margin:.35rem 0}
+.tablewrap{overflow-x:auto;margin:1rem 0;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.96rem}
+th,td{text-align:left;vertical-align:top;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+th{background:var(--surface-2);font-weight:700}
+tr:last-child td{border-bottom:0}
+.formula{display:inline-block;background:var(--info-bg);padding:.5rem .9rem;border-radius:8px;font-weight:700;margin:.2rem 0}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;margin-top:1.2rem}
+
+.videos{display:grid;gap:.8rem}
+.video{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem;text-decoration:none;color:var(--ink)}
+.video:hover{border-color:var(--cobalt)}
+.play{width:3rem;height:3rem;border-radius:50%;background:var(--display);display:grid;place-items:center}
+.play svg{width:1.1rem;height:1.1rem;fill:var(--badge);margin-left:3px}
+.video strong{display:block;color:var(--cobalt)}
+.video small{color:var(--muted)}
+.video p{margin:.4rem 0 0}
+
+.progress{display:flex;align-items:center;gap:.8rem;color:var(--muted);margin-bottom:1rem}
+.bar{flex:1;max-width:14rem;height:.5rem;background:var(--line);border-radius:99px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--ok);transition:width .3s}
+
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem 1.2rem;margin-bottom:1rem}
+.ex.is-done{border-color:var(--ok)}
+.ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.ex-head h3{margin:0;font-size:1.05rem;color:var(--muted)}
+.ex-state{font-weight:700;color:var(--ok);font-size:.9rem}
+.ex-q{font-weight:700;font-size:1.08rem;margin:.4rem 0 .9rem}
+.ex-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem}
+.ex-actions:empty{display:none}
+.opts{display:grid;gap:.5rem}
+.opt{text-align:left;background:var(--surface-2);border:2px solid var(--line);border-radius:8px;padding:.7rem .9rem;cursor:pointer}
+.opt:hover{border-color:var(--cobalt)}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.fb{margin-top:.8rem;border-radius:8px}
+.fb:empty{display:none}
+.fb.ok{background:var(--ok-bg);padding:.7rem .9rem}
+.fb.bad{background:var(--bad-bg);padding:.7rem .9rem}
+.fb.info{background:var(--info-bg);padding:.7rem .9rem}
+
+.sort{display:grid;gap:.5rem}
+.sort-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.8rem;align-items:center;padding:.55rem .7rem;border-radius:8px;background:var(--surface-2);border:2px solid transparent}
+.sort-row.right{border-color:var(--ok)}
+.sort-row.wrong{border-color:var(--bad)}
+.seg{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:flex-end}
+.seg-btn{border:2px solid var(--line);background:var(--surface);border-radius:99px;padding:.3rem .8rem;cursor:pointer;font-size:.92rem}
+.seg-btn:hover{border-color:var(--cobalt)}
+.seg-btn[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:var(--cobalt-ink)}
+
+.order{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;counter-reset:st}
+.order li{display:grid;grid-template-columns:auto 1fr auto;gap:.7rem;align-items:center;background:var(--surface-2);border:2px solid transparent;border-radius:8px;padding:.5rem .6rem;counter-increment:st}
+.order li::before{content:counter(st);font:700 .95rem "Bricolage Grotesque",sans-serif;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
+.order li.right{border-color:var(--ok)}
+.order li.wrong{border-color:var(--bad)}
+.mv{width:2.3rem;height:2.3rem;border:2px solid var(--line);background:var(--surface);border-radius:8px;cursor:pointer;font-weight:700}
+.mv:disabled{opacity:.35;cursor:default}
+.order-btns{display:flex;gap:.3rem}
+
+.num{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.num label{display:flex;align-items:center;gap:.4rem;border:2px solid var(--line);border-radius:8px;background:var(--surface);padding:0 .8rem}
+.num label:focus-within{border-color:var(--cobalt)}
+.num input{border:0;background:transparent;color:var(--ink);font:inherit;padding:.65rem 0;width:8rem;outline:none}
+.num .pre,.num .suf{color:var(--muted);font-weight:700}
+
+.match{display:grid;gap:.5rem}
+.match-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.8rem;align-items:center;padding:.5rem .7rem;background:var(--surface-2);border-radius:8px;border:2px solid transparent}
+.match-row.right{border-color:var(--ok)}
+.match-row.wrong{border-color:var(--bad)}
+.match select{font:inherit;padding:.5rem;border-radius:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+
+.open textarea{width:100%;min-height:7rem;font:inherit;padding:.7rem .9rem;border-radius:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);resize:vertical}
+.open textarea:focus{border-color:var(--cobalt);outline:none}
+
+.promo{margin-top:2rem;background:var(--display);color:#F2F4F8;border-radius:14px;padding:1.6rem 1.5rem;position:relative;overflow:hidden}
+.promo h2{margin:0 0 .4rem;color:var(--badge);font-size:2rem}
+.promo .btn{margin-top:.8rem;background:var(--badge);border-color:var(--badge);color:var(--badge-ink)}
+
+/* test */
+.test{list-style:none;margin:0;padding:0;counter-reset:q}
+.test > li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem;counter-increment:q}
+.test > li.right{border-color:var(--ok)}
+.test > li.wrong{border-color:var(--bad)}
+.test fieldset{border:0;margin:0;padding:0;min-width:0}
+.test legend{font-weight:700;padding:0;margin-bottom:.6rem}
+.test legend::before{content:counter(q) ". ";color:var(--muted)}
+.choice{display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .6rem;border-radius:8px;cursor:pointer}
+.choice:hover{background:var(--surface-2)}
+.choice input{margin-top:.35rem;accent-color:var(--cobalt);width:1.05rem;height:1.05rem;flex:none}
+.t-fb{margin:.5rem 0 0;font-size:.95rem}
+.t-fb:empty{display:none}
+.result{margin-top:1.4rem}
+
+/* diploma */
+.dip-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem}
+.diploma{max-width:820px;background:var(--surface);color:var(--ink);border:2px solid var(--ink);outline:8px solid var(--surface);box-shadow:0 0 0 10px var(--ink);margin:10px;padding:clamp(1.4rem,5vw,3.2rem);text-align:center}
+.dip-brand{font:800 1.4rem/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;display:inline-flex;gap:.45rem;align-items:center}
+.dip-brand i{width:.8rem;height:.8rem;background:var(--badge);display:inline-block;border-radius:2px;transform:rotate(45deg)}
+.dip-small{color:var(--muted);margin:1.3rem 0 .3rem}
+.dip-name{font:800 clamp(2rem,6vw,3.2rem)/1.1 "Bricolage Grotesque",sans-serif;margin:.2rem 0;word-break:break-word}
+.dip-title{font-size:clamp(1.6rem,4.5vw,2.4rem);margin:.4rem 0 1.2rem;color:var(--cobalt)}
+.dip-list{list-style:none;padding:0;margin:0 auto;max-width:34rem;display:grid;gap:.35rem;text-align:left}
+.dip-list li{display:flex;gap:.6rem;align-items:baseline}
+.dip-list li::before{content:"✓";color:var(--ok);font-weight:700}
+.dip-foot{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:2.2rem;font-size:.95rem}
+.dip-foot div:first-child{text-align:left}
+.dip-foot div:last-child{text-align:right}
+.seal{width:5.2rem;height:5.2rem;border-radius:50%;background:var(--badge);color:var(--badge-ink);display:grid;place-items:center;font:800 .82rem/1.1 "Bricolage Grotesque",sans-serif;text-align:center;box-shadow:0 0 0 4px var(--surface),0 0 0 6px var(--badge)}
+.sig{font:italic 1.3rem "Bricolage Grotesque",sans-serif}
+
+footer{max-width:1040px;margin:0 auto;padding:0 1.25rem 2.5rem;color:var(--muted);font-size:.9rem}
+footer details{border-top:1px solid var(--line);padding-top:1rem}
+footer summary{cursor:pointer;font-weight:700}
+
+@media (max-width:760px){
+  .lobby{grid-template-columns:1fr;gap:1.5rem}
+  .badge-wrap{order:-1}
+  .strap{height:2.5rem}
+  .sort-row,.match-row{grid-template-columns:1fr}
+  .seg{justify-content:flex-start}
+  .dip-foot{grid-template-columns:1fr;justify-items:center}
+  .dip-foot div:first-child,.dip-foot div:last-child{text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+@media print{
+  :root{padding:0}
+  body{background:#fff;color:#000}
+  .top,.lift,footer,.no-print{display:none!important}
+  main{padding:0}
+  .diploma{margin:12px auto}
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="top-inner">
+    <a class="brand" href="#" id="brand"><i aria-hidden="true"></i>nova group</a>
+    <div class="mini" id="mini"></div>
+  </div>
+  <nav class="lift" id="lift" aria-label="Verdiepingen"></nav>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer class="no-print">
+  <details>
+    <summary>Info voor de leerkracht</summary>
+    <p>De vooruitgang van elke leerling wordt bewaard in de browser op het toestel waarmee hij of zij werkt. Een volgende verdieping gaat pas open als alle opdrachten van de vorige klaar zijn. Wie de test haalt (minstens 11 op 15), krijgt het diploma.</p>
+    <p><button type="button" class="btn ghost" id="reset">Alles wissen en opnieuw beginnen</button></p>
+  </details>
+</footer>
+
+<script>
+/* ---------- inhoud ---------- */
+const FLOORS = [
+{
+  id:'f1', nr:1, dept:'Partnerships', role:'Junior partnermanager', title:'Profit en non-profit',
+  learn:'Hoe herken je profit- en non-profitorganisaties, en wat is het verschil?',
+  mail:{from:'Leila Mertens, hoofd Partnerships', subject:'Jouw eerste opdracht',
+    body:`<p>Welkom bij Nova Group, {naam}! Fijn dat je er bent.</p>
+<p>Nova werkt samen met heel wat organisaties. Sommige zijn <strong>klanten</strong> die met ons zaken doen, andere zijn <strong>goede doelen</strong> die we willen steunen. Voor we iemand contacteren, moeten we weten met welk soort organisatie we te maken hebben.</p>
+<p>Lees de uitleg hieronder en sorteer daarna onze lijst met contacten. Succes!</p>`},
+  uitleg:`
+<h3>Profitorganisaties</h3>
+<p>Een profitorganisatie wil vooral <strong>winst maken</strong>. Ze verkoopt producten of diensten voor meer geld dan het haar kost. De winst gaat naar de eigenaars of aandeelhouders, of wordt opnieuw in het bedrijf gestoken.</p>
+<p>Voorbeelden: een supermarkt, een kledingketen, een telecombedrijf, een streamingdienst, de bakker om de hoek.</p>
+<h3>Non-profitorganisaties</h3>
+<p>Een non-profitorganisatie wil vooral een <strong>maatschappelijk doel</strong> bereiken: mensen helpen, de natuur beschermen, sport of cultuur mogelijk maken. Ze mag wel geld overhouden, maar dat geld gaat terug naar dat doel en niet naar eigenaars.</p>
+<p>In België is een non-profit vaak een <strong>vzw</strong>: een vereniging zonder winstoogmerk. Voorbeelden: het Rode Kruis, Artsen Zonder Grenzen, Natuurpunt, je jeugdbeweging of de sportclub in je gemeente.</p>
+<h3>Hoe herken je ze?</h3>
+<p>Stel jezelf deze vragen als je een organisatie tegenkomt:</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Vraag</th><th>Profit</th><th>Non-profit</th></tr></thead>
+<tbody>
+<tr><td>Wat is het doel?</td><td>Winst maken</td><td>Een maatschappelijk doel bereiken</td></tr>
+<tr><td>Waar komt het geld vandaan?</td><td>Verkoop van producten en diensten</td><td>Giften, subsidies, lidgeld, acties (en soms ook verkoop)</td></tr>
+<tr><td>Wat gebeurt er met geld dat overblijft?</td><td>Naar de eigenaars of aandeelhouders</td><td>Terug naar het doel</td></tr>
+<tr><td>Wie werkt er?</td><td>Betaald personeel</td><td>Betaald personeel én vaak veel vrijwilligers</td></tr>
+<tr><td>Wat staat er bij de naam?</td><td>Vaak BV of NV</td><td>Vaak vzw</td></tr>
+<tr><td>Wanneer is het een succes?</td><td>Als er veel winst is</td><td>Als het doel bereikt wordt</td></tr>
+</tbody></table></div>
+<p class="tip"><strong>Let op:</strong> ook een non-profit kan iets verkopen, zoals de wafelverkoop van de Chiro. Het verschil zit in wat er met het geld gebeurt. En een bedrijf dat een goed doel sponsort, blijft gewoon een profitbedrijf.</p>`,
+  videos:[],
+  ex:[
+    {type:'sort', q:'Nova heeft een lijst met contacten. Is elke organisatie profit of non-profit?', cats:['Profit','Non-profit'],
+     items:[{t:'Colruyt',c:0},{t:'Rode Kruis Vlaanderen',c:1},{t:'Zara',c:0},{t:'Natuurpunt',c:1},{t:'De Chiro in je gemeente',c:1},{t:'Proximus',c:0},{t:'Artsen Zonder Grenzen',c:1},{t:'De bakker om de hoek',c:0},{t:'Netflix',c:0},{t:'De jeugdvoetbalclub (vzw)',c:1}],
+     why:'Profitorganisaties willen winst maken voor hun eigenaars. Non-profits zetten hun geld in voor een maatschappelijk doel.'},
+    {type:'mc', q:'Wat is het belangrijkste verschil tussen een profit- en een non-profitorganisatie?',
+     options:['Profitorganisaties zijn altijd groter','Hun doel, en wat er gebeurt met het geld dat overblijft','Non-profitorganisaties verkopen nooit iets','Bij een non-profit werkt niemand die betaald wordt'], correct:1,
+     why:'Grootte zegt niets. Ook non-profits verkopen soms iets en hebben vaak betaald personeel.',
+     hint:'Kijk naar de tip onderaan de uitleg: ook een non-profit mag iets verkopen.'},
+    {type:'sort', q:'Hoort dit kenmerk bij een profit- of bij een non-profitorganisatie?', cats:['Profit','Non-profit'],
+     items:[{t:'De winst gaat naar de aandeelhouders',c:0},{t:'Draait voor een groot deel op vrijwilligers',c:1},{t:'Krijgt giften en subsidies',c:1},{t:'Is tevreden als er zoveel mogelijk winst is',c:0},{t:'Heeft "vzw" bij de naam',c:1},{t:'Heeft "NV" of "BV" bij de naam',c:0}]},
+    {type:'mc', q:'De Chiro verkoopt wafels en houdt € 800 over. Wat gebeurt er normaal met dat geld?',
+     options:['De leiding verdeelt het onder elkaar','Het gaat naar de werking, bijvoorbeeld het kamp of nieuw materiaal','Het gaat naar de bank','De Chiro moet het teruggeven aan de kopers'], correct:1,
+     why:'Een vzw mag geld overhouden, maar gebruikt het voor haar doel.'},
+    {type:'open', q:'Nova wil een goed doel sponsoren. Kies een non-profitorganisatie die jij kent en leg in twee zinnen uit waarom het een non-profit is.',
+     model:'Bijvoorbeeld: "Ik kies Natuurpunt. Hun doel is de natuur beschermen en niet winst maken, en het geld van leden en giften gebruiken ze om natuurgebieden te kopen en te onderhouden." Heb jij het <strong>doel</strong> én <strong>wat er met het geld gebeurt</strong> vermeld? Dan zit je goed.'}
+  ]
+},
+{
+  id:'f2', nr:2, dept:'Innovatielab', role:'Junior projectcoach', title:'Crowdfunding',
+  learn:'Wat is crowdfunding, hoe werkt het en wie kan eraan doen?',
+  mail:{from:'Tom Claes, Innovatielab', subject:'Geld ophalen bij de crowd?',
+    body:`<p>Dag {naam}, proficiat met je eerste promotie!</p>
+<p>Elke week krijgen we mails van starters die geld zoeken voor hun idee. Ze vragen of Nova wil meedoen aan hun <strong>crowdfunding</strong>. En onze directie vraagt zich af of crowdfunding ook iets is voor een nieuw product van Nova.</p>
+<p>Zoek uit hoe het werkt, zodat jij de starters goed kan begeleiden.</p>`},
+  uitleg:`
+<h3>Wat is crowdfunding?</h3>
+<p>Bij crowdfunding zamel je geld in bij een <strong>grote groep mensen</strong> (de crowd). Elke persoon geeft een klein bedrag, maar samen wordt dat een groot bedrag. Dat gebeurt meestal via een website: een crowdfundingplatform.</p>
+<h3>Voorbeelden</h3>
+<ul>
+<li>Een bandje wil zijn eerste album opnemen en vraagt fans om mee te betalen.</li>
+<li>Een school wil een nieuwe speelplaats en vraagt ouders, buren en lokale bedrijven om te helpen.</li>
+<li>Een uitvinder heeft een slimme drinkfles bedacht, maar heeft geld nodig om de eerste flessen te laten maken.</li>
+<li>In 2012 haalde het slimme horloge Pebble via het platform Kickstarter meer dan 10 miljoen dollar op, bij tienduizenden mensen.</li>
+</ul>
+<h3>Vier soorten crowdfunding</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Soort</th><th>Wat krijg je terug?</th><th>Voorbeeld</th></tr></thead>
+<tbody>
+<tr><td><strong>Donatie</strong></td><td>Niets, alleen een goed gevoel</td><td>Geld geven aan een dierenasiel</td></tr>
+<tr><td><strong>Beloning</strong></td><td>Een tegenprestatie: het product zelf, een T-shirt, je naam op een bedankmuur</td><td>Een nieuw bordspel steunen en het als eerste krijgen</td></tr>
+<tr><td><strong>Lening</strong></td><td>Je geld terug, meestal met rente erbij</td><td>Een bakkerij die een nieuwe oven wil</td></tr>
+<tr><td><strong>Aandelen</strong></td><td>Een klein stukje van het bedrijf: je wordt mede-eigenaar</td><td>Investeren in een jonge start-up</td></tr>
+</tbody></table></div>
+<h3>Hoe werkt het?</h3>
+<ol>
+<li>Je bedenkt een idee en kiest een <strong>doelbedrag</strong> en een <strong>einddatum</strong>.</li>
+<li>Je maakt een campagne op een platform: een duidelijke tekst, foto's, een filmpje en eventueel beloningen.</li>
+<li>Je maakt reclame voor je campagne bij familie, vrienden en op sociale media.</li>
+<li>Mensen steunen je project met een bedrag.</li>
+<li>Op de einddatum kijk je of het doelbedrag gehaald is.</li>
+<li>Je voert je project uit en bezorgt de beloningen aan je steuners.</li>
+</ol>
+<p>Let op de regels van het platform. Bij <strong>alles-of-niets</strong> krijg je het geld enkel als je het doelbedrag haalt; anders krijgen de steuners hun geld terug. Bij andere platformen mag je alles houden wat je ophaalt, ook als je je doel niet haalt.</p>
+<h3>Wie kan eraan doen?</h3>
+<p>Bijna iedereen met een duidelijk plan: starters en kleine bedrijven, kunstenaars, verenigingen, scholen, goede doelen en gewone mensen. Voor jongeren onder 18 moet meestal een volwassene de campagne openen.</p>
+<p class="tip"><strong>Opgelet als steuner:</strong> je krijgt geen garantie. Een project kan mislukken of veel later klaar zijn dan beloofd.</p>`,
+  videos:[
+    {title:'Nieuwsuur in de klas: crowdfunding', src:'Schooltv', url:'https://schooltv.nl/video-item/nieuwsuur-in-de-klas-crowdfunding',
+     ask:'Welke soort crowdfunding zie je in dit filmpje: donatie, beloning, lening of aandelen? Waarom kiezen bedrijven hiervoor en niet voor de bank?'}
+  ],
+  ex:[
+    {type:'mc', q:'Wat is crowdfunding?',
+     options:['Geld lenen bij één grote bank','Geld inzamelen bij veel mensen die elk een klein bedrag geven, meestal online','Een product gratis weggeven om reclame te maken','Belastingen betalen aan de overheid'], correct:1},
+    {type:'sort', q:'Een starter vraagt welke soort crowdfunding dit is. Kies voor elke situatie.', cats:['Donatie','Beloning','Lening','Aandelen'],
+     items:[{t:'Je geeft € 10 aan een dierenasiel en krijgt niets terug',c:0},{t:'Je steunt een nieuw spel met € 25 en krijgt het spel thuis zodra het klaar is',c:1},{t:'Je leent € 100 aan een bakkerij en krijgt het na drie jaar terug, met rente',c:2},{t:'Je investeert € 200 in een start-up en wordt mede-eigenaar',c:3},{t:'Voor € 20 komt je naam op de muur van het nieuwe jeugdhuis',c:1}]},
+    {type:'order', q:'Zet de stappen van een crowdfundingcampagne in de juiste volgorde.',
+     steps:['Je bedenkt een idee en kiest een doelbedrag en een einddatum',"Je maakt een campagne op een platform met tekst, foto's en een filmpje",'Je deelt de campagne met familie, vrienden en op sociale media','Mensen steunen je project met een bedrag','Op de einddatum kijk je of het doelbedrag gehaald is','Je voert het project uit en bezorgt de beloningen']},
+    {type:'mc', q:'Een start-up wil € 5.000 ophalen op een platform met de regel alles-of-niets. Op de einddatum staat de teller op € 4.200. Wat gebeurt er?',
+     options:['De start-up krijgt € 4.200','Het platform vult aan tot € 5.000','De steuners krijgen hun geld terug en de start-up krijgt niets','De campagne loopt automatisch nog een jaar door'], correct:2,
+     why:'Bij alles-of-niets krijg je enkel geld als het doel gehaald is. Zo weten steuners zeker dat het project genoeg geld heeft om te starten.'},
+    {type:'mc', q:'Wie kan er aan crowdfunding doen?',
+     options:['Alleen grote bedrijven','Alleen goede doelen','Bijna iedereen met een duidelijk plan: starters, verenigingen, scholen, kunstenaars, bedrijven','Alleen banken'], correct:2},
+    {type:'num', q:'Nova wil via crowdfunding € 6.000 ophalen voor een nieuwe drinkbus. Elke steuner betaalt € 30 en krijgt de drinkbus thuis. Hoeveel steuners heeft Nova minstens nodig?',
+     answer:200, suf:'steuners', hint:'Deel het doelbedrag door het bedrag per steuner.', solution:'€ 6.000 ÷ € 30 = 200 steuners.'}
+  ]
+},
+{
+  id:'f3', nr:3, dept:'Financiën', role:'Junior verkoopanalist', title:'Hoe maken bedrijven winst?',
+  learn:'Omzet, kosten en winst, en de weg van een idee tot winst.',
+  mail:{from:'Sofie De Wit, financieel directeur', subject:'Maken we winst op de NovaBottle?',
+    body:`<p>Hallo {naam},</p>
+<p>Nova lanceert binnenkort de <strong>NovaBottle</strong>, een herbruikbare drinkbus. Voor we er massaal in investeren, wil ik weten: <strong>maken we er winst op?</strong></p>
+<p>Leer de begrippen hieronder en reken daarna de cijfers voor mij na.</p>`},
+  uitleg:`
+<h3>Drie begrippen die je moet kennen</h3>
+<p><strong>Omzet</strong> is al het geld dat binnenkomt door wat je verkoopt.</p>
+<p class="formula">Omzet = verkoopprijs × aantal verkochte stuks</p>
+<p><strong>Kosten</strong> is al het geld dat je uitgeeft om je product te maken en te verkopen. Er zijn twee soorten:</p>
+<ul>
+<li><strong>Vaste kosten</strong> blijven gelijk, hoeveel je ook verkoopt: huur, lonen, verzekering.</li>
+<li><strong>Variabele kosten</strong> stijgen met elk stuk dat je maakt: grondstoffen, verpakking, verzending.</li>
+</ul>
+<p><strong>Winst</strong> is wat overblijft als je alle kosten van de omzet aftrekt.</p>
+<p class="formula">Winst = omzet − kosten</p>
+<p>Zijn de kosten hoger dan de omzet? Dan maak je <strong>verlies</strong>.</p>
+<h3>Voorbeeld: een limonadekraam</h3>
+<p>Je verkoopt 40 bekers limonade van € 1,50. Siroop en bekertjes kosten € 0,50 per beker. De standplaats kost € 10.</p>
+<ul>
+<li>Omzet: 40 × € 1,50 = € 60</li>
+<li>Variabele kosten: 40 × € 0,50 = € 20</li>
+<li>Vaste kosten: € 10</li>
+<li>Winst: € 60 − € 20 − € 10 = <strong>€ 30</strong></li>
+</ul>
+<h3>Van idee tot winst</h3>
+<p>Een bedrijf moet een hele weg afleggen voor er winst is:</p>
+<ol>
+<li><strong>Idee en marktonderzoek:</strong> wat willen klanten, en wat doen de concurrenten?</li>
+<li><strong>Geld zoeken om te starten:</strong> spaargeld, een lening bij de bank, investeerders of crowdfunding.</li>
+<li><strong>Inkopen en produceren:</strong> grondstoffen kopen en het product maken.</li>
+<li><strong>Een verkoopprijs bepalen:</strong> hoog genoeg om de kosten te betalen, maar niet zo hoog dat niemand koopt.</li>
+<li><strong>Reclame maken en verkopen:</strong> klanten moeten je product kennen en willen.</li>
+<li><strong>Afrekenen:</strong> de kosten van de omzet aftrekken. Wat overblijft is winst. Die gaat naar de eigenaars of wordt opnieuw in het bedrijf geïnvesteerd.</li>
+</ol>
+<p class="tip"><strong>Meer winst maken?</strong> Dat kan door meer te verkopen, een hogere prijs te vragen of de kosten te verlagen. Maar opgelet: een te hoge prijs kan klanten wegjagen.</p>`,
+  videos:[
+    {title:'Wat is winst? Omzet min kosten', src:'Schooltv', url:'https://schooltv.nl/video-item/wat-is-winst-omzet-min-kosten',
+     ask:'Waarom is € 10 verdienen met limonade nog geen € 10 winst?'}
+  ],
+  ex:[
+    {type:'num', q:'De NovaBottle kost € 15. Nova verkoopt er deze maand 400. Hoeveel is de omzet?',
+     answer:6000, pre:'€', hint:'Omzet = verkoopprijs × aantal verkochte stuks.', solution:'€ 15 × 400 = € 6.000.'},
+    {type:'sort', q:'Is dit een vaste of een variabele kost voor Nova?', cats:['Vaste kost','Variabele kost'],
+     items:[{t:'De huur van het magazijn',c:0},{t:'Het metaal voor elke fles',c:1},{t:'Het loon van de receptionist',c:0},{t:'Het doosje rond elke fles',c:1},{t:'De verzekering van het gebouw',c:0},{t:'De verzendkosten per bestelling',c:1}]},
+    {type:'num', q:'Per fles betaalt Nova € 5 voor materiaal en verpakking. Daarnaast zijn er € 2.500 vaste kosten per maand. Nova verkocht 400 flessen van € 15. Hoeveel winst maakt Nova?',
+     answer:1500, pre:'€', hint:'Reken eerst de omzet uit, dan alle kosten (variabel + vast), en trek die van de omzet af.',
+     solution:'Omzet: 400 × € 15 = € 6.000. Variabele kosten: 400 × € 5 = € 2.000. Alle kosten: € 2.000 + € 2.500 = € 4.500. Winst: € 6.000 − € 4.500 = € 1.500.'},
+    {type:'mc', q:'In een slechte maand verkoopt Nova maar 200 flessen. De prijs (€ 15) en de kosten per fles (€ 5) blijven hetzelfde, de vaste kosten zijn nog altijd € 2.500. Wat is het resultaat?',
+     options:['€ 500 winst','€ 500 verlies','€ 1.500 winst','Geen winst en geen verlies'], correct:1,
+     why:'Omzet € 3.000, kosten € 1.000 + € 2.500 = € 3.500. De kosten zijn hoger dan de omzet. De vaste kosten moet je altijd betalen, ook als je weinig verkoopt.',
+     hint:'Omzet: 200 × € 15. Kosten: 200 × € 5, plus de vaste kosten.'},
+    {type:'order', q:'Zet de weg van idee tot winst in de juiste volgorde.',
+     steps:['Idee en marktonderzoek: wat willen klanten?','Geld zoeken om te starten: spaargeld, bank of crowdfunding','Grondstoffen kopen en het product maken','Een verkoopprijs bepalen','Reclame maken en het product verkopen','De kosten van de omzet aftrekken: wat overblijft is winst']},
+    {type:'mc', q:'Nova wil meer winst maken zonder meer flessen te verkopen. Wat helpt?',
+     options:['Een goedkopere leverancier zoeken voor het metaal','Meer flessen laten maken dan je kan verkopen','Een groter magazijn huren','De verkoopprijs verlagen'], correct:0,
+     why:'Lagere kosten per fles betekenen meer winst per verkochte fles.'}
+  ]
+},
+{
+  id:'f4', nr:4, dept:'Marketing', role:'Junior marketeer', title:'Product placement en slogans',
+  learn:'Waarom en hoe bedrijven hun product in beeld brengen, en wat een goede slogan is.',
+  mail:{from:'Yasmine Peeters, hoofd Marketing', subject:'Iedereen moet de NovaBottle willen',
+    body:`<p>Hey {naam}, welkom op de marketingafdeling!</p>
+<p>De NovaBottle ligt binnenkort in de winkel. Nu moeten mensen hem ook <strong>willen</strong>. We denken aan <strong>product placement</strong> in series, games en bij influencers, en we hebben een sterke <strong>slogan</strong> nodig.</p>
+<p>Zoek uit hoe dat werkt en kom met ideeën.</p>`},
+  uitleg:`
+<h3>Wat is product placement?</h3>
+<p>Bij product placement laat een merk zijn product zien in een film, serie, tv-programma, videoclip, game of filmpje van een influencer. Het merk betaalt daarvoor met geld, of geeft de producten gratis aan de makers.</p>
+<h3>Waarom doen bedrijven dat?</h3>
+<ul>
+<li><strong>Je kan het niet wegzappen.</strong> Een reclameblok sla je over, een product in het verhaal zie je gewoon.</li>
+<li><strong>Het voelt niet als reclame.</strong> Het product zit in het verhaal, dus je denkt er minder over na.</li>
+<li><strong>Je favoriete personage gebruikt het.</strong> Als je idool iets drinkt of draagt, lijkt dat product meteen cooler.</li>
+<li><strong>Veel mensen zien het, ook later nog.</strong> Een populaire serie wordt jarenlang bekeken en het product zit er telkens in.</li>
+</ul>
+<h3>Op welke manieren gebeurt het?</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Manier</th><th>Voorbeeld</th></tr></thead>
+<tbody>
+<tr><td><strong>In beeld</strong></td><td>Een blikje frisdrank staat duidelijk zichtbaar op tafel.</td></tr>
+<tr><td><strong>Genoemd</strong></td><td>Een personage zegt de naam van het merk in een gesprek.</td></tr>
+<tr><td><strong>Gebruikt in het verhaal</strong></td><td>De geheim agent rijdt de hele film met hetzelfde automerk.</td></tr>
+<tr><td><strong>Influencer</strong></td><td>Een vlogger toont een product in een video, als betaalde samenwerking.</td></tr>
+<tr><td><strong>Game</strong></td><td>In een voetbalgame hangen reclameborden van echte merken.</td></tr>
+</tbody></table></div>
+<h3>Welke regels zijn er?</h3>
+<p>Product placement moet eerlijk zijn. In België moeten tv-makers melden dat hun programma product placement bevat, met het <strong>PP-logo</strong> bij het begin en het einde. Influencers moeten duidelijk maken dat het om reclame gaat, bijvoorbeeld met #reclame of "betaalde samenwerking".</p>
+<h3>Slogans: een zin die blijft hangen</h3>
+<p>Een slogan is een korte, pakkende zin die bij een merk hoort. Een goede slogan onthoud je meteen, geeft je een goed gevoel over het product en maakt je nieuwsgierig. Product placement en een slogan werken samen: je ziet het product, en de slogan zorgt ervoor dat je het niet vergeet.</p>
+<p>Reclamemakers gebruiken daarvoor een paar trucjes:</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Techniek</th><th>Wat doet het?</th><th>Voorbeeld</th></tr></thead>
+<tbody>
+<tr><td><strong>Rijm</strong></td><td>Woorden die rijmen, onthoud je makkelijker.</td><td>"Een fles voor elke les" (bedacht voor Nova)</td></tr>
+<tr><td><strong>Alliteratie</strong></td><td>Woorden die met dezelfde klank beginnen, klinken als muziek.</td><td>"Sterk, stil en stijlvol" (bedacht voor Nova)</td></tr>
+<tr><td><strong>Herhaling</strong></td><td>Hetzelfde woord of zinsdeel komt terug.</td><td>"Have a break, have a KitKat" (KitKat)</td></tr>
+<tr><td><strong>Belofte</strong></td><td>De slogan belooft een voordeel.</td><td>"Red Bull geeft je vleugels" (Red Bull)</td></tr>
+<tr><td><strong>Oproep</strong></td><td>De slogan zet je aan om iets te doen.</td><td>"Just do it" (Nike)</td></tr>
+</tbody></table></div>`,
+  videos:[
+    {title:'Nieuwsuur in de klas: reclame in YouTube-vlogs', src:'Schooltv', url:'https://schooltv.nl/video-item/nieuwsuur-in-de-klas-reclame-in-youtube-vlogs',
+     ask:'Hoe kan je zien dat een vlogger betaald wordt om een product te tonen? Is dat altijd duidelijk?'},
+    {title:'Mr. Right: hoe werkt reclame?', src:'Schooltv', url:'https://schooltv.nl/video-item/mr-right-hoe-werkt-reclame',
+     ask:'Welke trucjes gebruiken reclamemakers om je te verleiden om iets te kopen?'},
+    {title:'Hoe verkoop je iets met reclame?', src:'Schooltv', url:'https://schooltv.nl/item/hoe-verkoop-je-iets-met-reclame-zo-zet-je-een-product-in-de-markt',
+     ask:'Welke naam en slogan bedenken ze voor de gebakjes? Waarom verkopen ze daarna beter?'}
+  ],
+  ex:[
+    {type:'mc', q:'Waarom kiezen bedrijven voor product placement?',
+     options:['Omdat het altijd gratis is','Omdat kijkers het niet kunnen wegzappen en het product gekoppeld wordt aan personages die ze leuk vinden','Omdat reclame op tv verboden is','Omdat ze dan geen belastingen moeten betalen'], correct:1},
+    {type:'sort', q:'Op welke manier gebeurt de product placement hier?', cats:['In beeld','Genoemd','In het verhaal','Influencer','Game'],
+     items:[{t:'De hoofdrolspeler drinkt uit een blikje waarop je het merk goed ziet',c:0},{t:'Een personage zegt: "Zullen we een pizza van Pizza Palace bestellen?"',c:1},{t:'De geheim agent vlucht de hele film weg in een wagen van hetzelfde merk',c:2},{t:'Een vlogger pakt sneakers uit en zegt dat het een betaalde samenwerking is',c:3},{t:'In een voetbalgame hangen reclameborden van echte merken',c:4}]},
+    {type:'mc', q:'Bij het begin van een tv-programma zie je het logo "PP". Wat betekent dat?',
+     options:['Het programma is gratis','Er zit product placement in het programma','Het programma is enkel voor volwassenen','Het is een herhaling'], correct:1,
+     why:'Zo weet je als kijker dat merken betaald hebben om in beeld te komen.'},
+    {type:'match', q:'Welke slogan hoort bij welk merk?',
+     pairs:[{a:'"Just do it"',b:'Nike'},{a:'"… geeft je vleugels"',b:'Red Bull'},{a:'"Have a break, have a …"',b:'KitKat'},{a:'"Omdat je het waard bent"',b:"L'Oréal"},{a:'"I\'m lovin\' it"',b:"McDonald's"}]},
+    {type:'match', q:'Welke techniek gebruikt elke slogan voor de NovaBottle?',
+     pairs:[{a:'"Fris, fit en fantastisch"',b:'Alliteratie'},{a:'"Altijd klaar, altijd paraat: Nova, waar je ook gaat"',b:'Rijm'},{a:'"Drink slim. Drink Nova."',b:'Herhaling'},{a:'"Eén slok en je bent weer wakker"',b:'Belofte'},{a:'"Bestel de jouwe vandaag nog!"',b:'Oproep'}]},
+    {type:'open', q:'Bedenk een eigen slogan voor de NovaBottle. Schrijf erbij welke techniek je gebruikt, en in welk programma, welke film of welke game je de fles zou laten zien. Waarom net daar?',
+     model:'Bijvoorbeeld: "Vol water, vol energie." Techniek: herhaling. Ik zou de fles laten zien bij een influencer die veel sport, want wie sport heeft altijd water nodig. Zo bereik ik de mensen die het meest een drinkbus willen kopen. Heb jij een <strong>techniek</strong> en een <strong>reden</strong> voor je plek genoemd? Top!'}
+  ]
+}
+];
+
+const TEST = [
+  {q:'Wat is het hoofddoel van een profitorganisatie?', o:['Mensen helpen zonder er iets aan te verdienen','Winst maken','Zoveel mogelijk vrijwilligers vinden','Subsidies krijgen van de overheid'], c:1},
+  {q:'Welke organisatie is een non-profitorganisatie?', o:['Delhaize','Natuurpunt','IKEA','Zalando'], c:1},
+  {q:'Wat doet een vzw met het geld dat ze overhoudt?', o:['Ze verdeelt het onder de leden','Ze gebruikt het voor haar doel','Ze geeft het aan de aandeelhouders','Ze moet het aan de overheid geven'], c:1},
+  {q:'Waaraan herken je een non-profitorganisatie het best?', o:['Ze is heel klein','Ze verkoopt nooit iets','Haar doel is maatschappelijk, niet winst maken','Ze heeft geen website'], c:2},
+  {q:'Wat is crowdfunding?', o:['Geld inzamelen bij veel mensen die elk een klein bedrag geven','Een lening bij één bank','Een product gratis weggeven','Een soort belasting'], c:0},
+  {q:'Je steunt een project en krijgt als bedankje een T-shirt. Welke soort crowdfunding is dat?', o:['Donatie','Beloning','Lening','Aandelen'], c:1},
+  {q:'Een project haalt zijn doelbedrag niet, op een platform met alles-of-niets. Wat gebeurt er?', o:['Het project krijgt wat er opgehaald is','Het platform betaalt het tekort','De steuners krijgen hun geld terug','Het project krijgt het dubbele'], c:2},
+  {q:'Wie kan er aan crowdfunding doen?', o:['Alleen grote bedrijven','Alleen banken','Bijna iedereen met een duidelijk plan','Alleen goede doelen'], c:2},
+  {q:'Hoe bereken je de omzet?', o:['Verkoopprijs × aantal verkochte stuks','Omzet − kosten','Vaste kosten + variabele kosten','Winst × aantal klanten'], c:0},
+  {q:'Een bedrijf verkoopt 250 petjes van € 8. Hoeveel is de omzet?', o:['€ 258','€ 2.000','€ 2.500','€ 1.800'], c:1},
+  {q:'De omzet is € 2.000 en alle kosten samen zijn € 1.500. Wat is het resultaat?', o:['€ 3.500 winst','€ 500 verlies','€ 500 winst','€ 1.500 winst'], c:2},
+  {q:'Welke kost is een vaste kost?', o:['Het plastic voor elk petje','De huur van de winkel','De verzendkosten per pakje','De verpakking van elk product'], c:1},
+  {q:'Waarom doen bedrijven aan product placement?', o:['Omdat het verplicht is','Omdat je het niet kan wegzappen en het voelt niet als reclame','Omdat het nooit iets kost','Omdat gewone reclame verboden is'], c:1},
+  {q:'Wat betekent het PP-logo bij een tv-programma?', o:['Het programma bevat product placement','Het programma is een herhaling','Het programma is gesponsord door de overheid','Het programma is gratis'], c:0},
+  {q:'"Have a break, have a KitKat." Welke techniek gebruikt deze slogan?', o:['Rijm','Oproep','Herhaling','Alliteratie'], c:2}
+];
+const PASS = 11;
+
+/* ---------- toestand ---------- */
+const KEY='nova-lesreeks-v1';
+function load(){try{const r=localStorage.getItem(KEY);return r?JSON.parse(r):null}catch(e){return null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+let S = Object.assign({name:'',done:{},test:null}, load()||{});
+let view = {type:'start'};
+
+const $ = (s,el=document)=>el.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle = a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const today = ()=>new Date().toLocaleDateString('nl-BE',{day:'numeric',month:'long',year:'numeric'});
+const initials = n=>{const p=n.trim().split(/\s+/).filter(Boolean);return p.length?(p[0][0]+(p.length>1?p[p.length-1][0]:'')).toUpperCase():'?'};
+
+const exDone=(f,i)=>!!S.done[f.id+'-'+i];
+const floorDone=f=>f.ex.every((_,i)=>exDone(f,i));
+const floorOpen=idx=>FLOORS.slice(0,idx).every(floorDone);
+const testOpen=()=>FLOORS.every(floorDone);
+const passed=()=>!!(S.test&&S.test.passed);
+function role(){
+  if(passed()) return 'Beginnend salesmedewerker';
+  if(testOpen()) return 'Kandidaat salesmedewerker';
+  for(let i=FLOORS.length-1;i>=0;i--) if(floorOpen(i)) return FLOORS[i].role;
+  return 'Nieuwe medewerker';
+}
+
+/* ---------- kop ---------- */
+function renderTop(){
+  const mini=$('#mini'), lift=$('#lift');
+  if(!S.name){mini.innerHTML='';lift.hidden=true;return}
+  lift.hidden=false;
+  mini.innerHTML=`<span class="mini-init" aria-hidden="true">${esc(initials(S.name))}</span><span class="mini-txt"><strong>${esc(S.name)}</strong><span>${esc(role())}</span></span>`;
+  const disp = view.type==='floor'?FLOORS[view.i].nr : (view.type==='test'||view.type==='diploma')?'D':'G';
+  const items = FLOORS.map((f,i)=>({go:{type:'floor',i}, nr:f.nr, lbl:f.dept, open:floorOpen(i), done:floorDone(f), cur:view.type==='floor'&&view.i===i}))
+    .concat([{go:{type:'test'}, nr:'D', lbl:'Directie', open:testOpen(), done:passed(), cur:view.type==='test'||view.type==='diploma'}]);
+  lift.innerHTML=`<div class="lift-display" aria-label="Huidige verdieping">${disp}</div>`+items.map((it,k)=>
+    `<button type="button" class="floor-btn${it.done?' done':''}" data-k="${k}" ${it.open?'':'disabled'} ${it.cur?'aria-current="page"':''} title="${it.open?esc(it.lbl):'Nog op slot: werk eerst de vorige verdieping af'}"><span class="knob">${it.nr}</span><span class="floor-lbl">${esc(it.lbl)}</span></button>`).join('');
+  lift.querySelectorAll('.floor-btn').forEach(b=>b.addEventListener('click',()=>go(items[+b.dataset.k].go)));
+}
+
+function go(v){view=v;render();window.scrollTo(0,0);const h=$('#app h1');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+
+function render(){
+  if(!S.name) view={type:'start'};
+  if(view.type==='diploma'&&!passed()) view={type:'test'};
+  if(view.type==='test'&&!testOpen()) view=firstOpenFloor();
+  if(view.type==='floor'&&!floorOpen(view.i)) view=firstOpenFloor();
+  renderTop();
+  const app=$('#app');
+  if(view.type==='start') renderStart(app);
+  else if(view.type==='floor') renderFloor(app,view.i);
+  else if(view.type==='test') renderTest(app);
+  else if(view.type==='diploma') renderDiploma(app);
+}
+function firstOpenFloor(){
+  for(let i=0;i<FLOORS.length;i++) if(!floorDone(FLOORS[i])) return {type:'floor',i};
+  return passed()?{type:'diploma'}:{type:'test'};
+}
+
+/* ---------- inkomhal ---------- */
+function renderStart(app){
+  app.innerHTML=`
+<section class="lobby">
+  <div>
+    <p class="when">Maandag, 8.30 uur. De inkomhal van Nova Group.</p>
+    <h1>Jouw eerste werkdag begint nu</h1>
+    <div class="lobby-intro">
+      <p>Nova Group is een groot bedrijf dat drinkflessen en sportspullen maakt en verkoopt. Vandaag begin jij er te werken. Op elke verdieping krijg je een nieuwe functie en leer je iets over geld en bedrijven.</p>
+      <p>Werk alle vier de afdelingen af, slaag voor de test bij de directie en je krijgt je diploma van <strong>beginnend salesmedewerker</strong>.</p>
+    </div>
+    <form class="field" id="nameForm" novalidate>
+      <label for="nm">Hoe heet je? Je naam komt op je badge en je diploma.</label>
+      <input id="nm" name="nm" autocomplete="name" maxlength="40" placeholder="Voornaam en achternaam">
+      <button class="btn" type="submit">Haal je badge op</button>
+    </form>
+    <p class="err" id="nmErr" role="alert"></p>
+  </div>
+  <div class="badge-wrap" aria-hidden="true">
+    <div class="strap"></div><div class="clip"></div>
+    <div class="badge">
+      <div class="badge-band"><i></i>nova group</div>
+      <div class="badge-body">
+        <div class="badge-photo" id="bInit">?</div>
+        <div class="badge-name" id="bName">Jouw naam</div>
+        <div class="badge-role">Nieuwe medewerker</div>
+        <dl class="badge-meta">
+          <div><dt>Personeelsnr.</dt><dd>N-0147</dd></div>
+          <div><dt>In dienst sinds</dt><dd>${today()}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="plan">
+  <h2>Zo ziet je dag eruit</h2>
+  <ol>
+    ${FLOORS.map(f=>`<li data-n="${f.nr}"><strong>${esc(f.dept)}: ${esc(f.title)}</strong><span>${esc(f.learn)}</span></li>`).join('')}
+    <li data-n="D"><strong>Directie: eindtest</strong><span>15 vragen over alles wat je leerde. Met 11 juiste antwoorden krijg je je diploma.</span></li>
+  </ol>
+</section>`;
+  const inp=$('#nm'), bN=$('#bName'), bI=$('#bInit');
+  inp.addEventListener('input',()=>{const v=inp.value.trim();bN.textContent=v||'Jouw naam';bI.textContent=v?initials(v):'?'});
+  $('#nameForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const v=inp.value.trim();
+    if(v.length<2){$('#nmErr').textContent='Typ je naam, dan maken we je badge.';inp.focus();return}
+    S.name=v;save();go(firstOpenFloor());
+  });
+}
+
+/* ---------- verdieping ---------- */
+function renderFloor(app,idx){
+  const f=FLOORS[idx];
+  const vids=f.videos.length?`<section><h2>Filmpjes</h2><div class="videos">${f.videos.map(v=>`
+<a class="video" href="${v.url}" target="_blank" rel="noopener">
+  <span class="play" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 1.8v12.4L14 8z"/></svg></span>
+  <span><strong>${esc(v.title)}</strong><small>${esc(v.src)}, opent in een nieuw tabblad</small><p>Kijkvraag: ${esc(v.ask)}</p></span>
+</a>`).join('')}</div></section>`:'';
+  app.innerHTML=`
+<article class="col">
+  <p class="where">Verdieping ${f.nr}, ${esc(f.dept)}</p>
+  <h1>${esc(f.title)}</h1>
+  <p class="role-line">Je functie hier: <strong>${esc(f.role)}</strong></p>
+  <div class="mail">
+    <dl class="mail-head"><dt>Van</dt><dd>${esc(f.mail.from)}</dd><dt>Aan</dt><dd>${esc(S.name)}</dd><dt>Onderwerp</dt><dd><strong>${esc(f.mail.subject)}</strong></dd></dl>
+    <div class="mail-body">${f.mail.body.replace(/\{naam\}/g,esc(S.name.split(/\s+/)[0]))}</div>
+  </div>
+  <section><h2>Uitleg</h2><div class="prose">${f.uitleg}</div></section>
+  ${vids}
+  <section><h2>Opdrachten</h2><div class="progress" id="prog"></div><div id="exlist"></div></section>
+  <div id="promo"></div>
+</article>`;
+  const list=$('#exlist');
+  f.ex.forEach((ex,i)=>list.appendChild(buildEx(f,idx,i,ex)));
+  updateProgress(f,idx);
+}
+
+function updateProgress(f,idx){
+  const n=f.ex.length, d=f.ex.filter((_,i)=>exDone(f,i)).length;
+  $('#prog').innerHTML=`<span>${d} van ${n} opdrachten klaar</span><span class="bar" aria-hidden="true"><span style="width:${Math.round(d/n*100)}%"></span></span>`;
+  const promo=$('#promo');
+  if(d===n&&!promo.innerHTML){
+    const next=FLOORS[idx+1];
+    promo.innerHTML = next
+      ? `<div class="promo" role="status"><h2>Promotie!</h2><p>Goed gewerkt, ${esc(S.name.split(/\s+/)[0])}. De afdeling ${esc(next.dept)} heeft je nodig als <strong>${esc(next.role.toLowerCase())}</strong>.</p><button type="button" class="btn" id="nextBtn">Neem de lift naar verdieping ${next.nr}</button></div>`
+      : `<div class="promo" role="status"><h2>De directie wil je spreken</h2><p>Je hebt alle afdelingen doorlopen. Nog één stap: de eindtest. Haal je hem, dan krijg je je diploma.</p><button type="button" class="btn" id="nextBtn">Neem de lift naar de directie</button></div>`;
+    $('#nextBtn').addEventListener('click',()=>go(next?{type:'floor',i:idx+1}:{type:'test'}));
+  }
+}
+
+/* ---------- opdrachten ---------- */
+function buildEx(f,idx,i,ex){
+  const node=document.createElement('div');
+  node.className='ex'+(exDone(f,i)?' is-done':'');
+  const uid=f.id+'-'+i;
+  let inner='';
+  if(ex.type==='mc') inner=`<div class="opts">${ex.options.map((o,k)=>`<button type="button" class="opt" data-k="${k}">${esc(o)}</button>`).join('')}</div>`;
+  if(ex.type==='sort') inner=`<div class="sort">${ex.items.map((it,r)=>`<div class="sort-row" data-r="${r}"><span>${esc(it.t)}</span><div class="seg" role="group" aria-label="${esc(it.t)}">${ex.cats.map((c,k)=>`<button type="button" class="seg-btn" data-k="${k}" aria-pressed="false">${esc(c)}</button>`).join('')}</div></div>`).join('')}</div>
+    <div class="ex-actions"><button type="button" class="btn check">Controleer</button><button type="button" class="btn ghost solve" hidden>Toon de oplossing</button></div>`;
+  if(ex.type==='order') inner=`<ol class="order"></ol><div class="ex-actions"><button type="button" class="btn check">Controleer</button><button type="button" class="btn ghost solve" hidden>Toon de oplossing</button></div>`;
+  if(ex.type==='num') inner=`<div class="num"><label>${ex.pre?`<span class="pre">${ex.pre}</span>`:''}<span class="sr">Jouw antwoord</span><input type="text" inputmode="decimal" autocomplete="off">${ex.suf?`<span class="suf">${ex.suf}</span>`:''}</label><button type="button" class="btn check">Controleer</button><button type="button" class="btn ghost solve" hidden>Toon de oplossing</button></div>`;
+  if(ex.type==='match'){
+    const rights=shuffle(ex.pairs.map(p=>p.b));
+    inner=`<div class="match">${ex.pairs.map((p,r)=>`<div class="match-row" data-r="${r}"><label for="m-${uid}-${r}">${esc(p.a)}</label><select id="m-${uid}-${r}"><option value="">Kies…</option>${rights.map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('')}</select></div>`).join('')}</div>
+    <div class="ex-actions"><button type="button" class="btn check">Controleer</button><button type="button" class="btn ghost solve" hidden>Toon de oplossing</button></div>`;
+  }
+  if(ex.type==='open') inner=`<div class="open"><label class="sr" for="o-${uid}">Jouw antwoord</label><textarea id="o-${uid}" placeholder="Typ hier je antwoord"></textarea></div><div class="ex-actions"><button type="button" class="btn show" disabled>Toon een voorbeeldantwoord</button></div>`;
+  node.innerHTML=`<div class="ex-head"><h3>Opdracht ${i+1}</h3><span class="ex-state">${exDone(f,i)?'Klaar':''}</span></div><p class="ex-q">${esc(ex.q)}</p>${inner}<div class="fb" aria-live="polite"></div>`;
+
+  const fb=(kind,html)=>{const el=$('.fb',node);el.className='fb '+kind;el.innerHTML=html};
+  const done=()=>{
+    if(!S.done[uid]){S.done[uid]=true;save()}
+    node.classList.add('is-done');$('.ex-state',node).textContent='Klaar';
+    updateProgress(f,idx);renderTop();
+  };
+  const showSolve=()=>{const b=$('.solve',node);if(b)b.hidden=false};
+
+  if(ex.type==='mc'){
+    node.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+      node.querySelectorAll('.opt').forEach(x=>x.classList.remove('right','wrong'));
+      if(+b.dataset.k===ex.correct){b.classList.add('right');fb('ok','<strong>Juist!</strong> '+(ex.why||''));done()}
+      else{b.classList.add('wrong');fb('bad','<strong>Nog niet.</strong> '+(ex.hint||'Lees de uitleg nog eens en probeer opnieuw.'))}
+    }));
+  }
+
+  if(ex.type==='sort'){
+    const pick={};
+    node.querySelectorAll('.sort-row').forEach(row=>row.querySelectorAll('.seg-btn').forEach(b=>b.addEventListener('click',()=>{
+      row.querySelectorAll('.seg-btn').forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');pick[row.dataset.r]=+b.dataset.k;row.classList.remove('right','wrong');
+    })));
+    $('.check',node).addEventListener('click',()=>{
+      const n=ex.items.length;
+      if(Object.keys(pick).length<n){fb('bad','Kies eerst voor elke regel een antwoord.');return}
+      let good=0;
+      node.querySelectorAll('.sort-row').forEach(row=>{const r=+row.dataset.r,ok=pick[r]===ex.items[r].c;row.classList.toggle('right',ok);row.classList.toggle('wrong',!ok);if(ok)good++});
+      if(good===n){fb('ok','<strong>Alles juist!</strong> '+(ex.why||''));done()}
+      else{fb('bad',`<strong>${good} van de ${n} juist.</strong> Pas de regels met een rode rand aan en controleer opnieuw.`);showSolve()}
+    });
+    $('.solve',node).addEventListener('click',()=>{
+      node.querySelectorAll('.sort-row').forEach(row=>{const r=+row.dataset.r;pick[r]=ex.items[r].c;
+        row.querySelectorAll('.seg-btn').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.k===ex.items[r].c)));
+        row.classList.remove('wrong');row.classList.add('right')});
+      fb('info','Dit is de oplossing. Kijk goed waar je je vergiste.');done();
+    });
+  }
+
+  if(ex.type==='order'){
+    let seq=shuffle(ex.steps.map((_,k)=>k));
+    while(seq.every((k,p)=>k===p)) seq=shuffle(seq);
+    const list=$('.order',node);
+    const draw=()=>{
+      list.innerHTML=seq.map((k,p)=>`<li><span>${esc(ex.steps[k])}</span><span class="order-btns"><button type="button" class="mv" data-p="${p}" data-d="-1" aria-label="Schuif omhoog" ${p===0?'disabled':''}>↑</button><button type="button" class="mv" data-p="${p}" data-d="1" aria-label="Schuif omlaag" ${p===seq.length-1?'disabled':''}>↓</button></span></li>`).join('');
+      list.querySelectorAll('.mv').forEach(b=>b.addEventListener('click',()=>{
+        const p=+b.dataset.p,d=+b.dataset.d;[seq[p],seq[p+d]]=[seq[p+d],seq[p]];draw();
+        const t=list.querySelector(`.mv[data-p="${p+d}"][data-d="${d}"]:not([disabled])`)||list.querySelector(`.mv[data-p="${p+d}"]:not([disabled])`);
+        if(t)t.focus();
+      }));
+    };
+    draw();
+    $('.check',node).addEventListener('click',()=>{
+      let good=0;
+      list.querySelectorAll('li').forEach((li,p)=>{const ok=seq[p]===p;li.classList.toggle('right',ok);li.classList.toggle('wrong',!ok);if(ok)good++});
+      if(good===seq.length){fb('ok','<strong>Perfecte volgorde!</strong>');done()}
+      else{fb('bad',`<strong>${good} van de ${seq.length} op de juiste plaats.</strong> Verschuif de stappen met een rode rand.`);showSolve()}
+    });
+    $('.solve',node).addEventListener('click',()=>{
+      seq=ex.steps.map((_,k)=>k);draw();list.querySelectorAll('li').forEach(li=>li.classList.add('right'));
+      fb('info','Dit is de juiste volgorde.');done();
+    });
+  }
+
+  if(ex.type==='num'){
+    const inp=$('input',node);
+    const check=()=>{
+      const v=parseNum(inp.value);
+      if(isNaN(v)){fb('bad','Typ een getal, bijvoorbeeld 250.');return}
+      if(Math.abs(v-ex.answer)<0.01){fb('ok','<strong>Juist!</strong> '+esc(ex.solution));done()}
+      else{fb('bad','<strong>Nog niet.</strong> Tip: '+esc(ex.hint));showSolve()}
+    };
+    $('.check',node).addEventListener('click',check);
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+    $('.solve',node).addEventListener('click',()=>{inp.value=ex.answer.toLocaleString('nl-BE');fb('info','Zo reken je het uit: '+esc(ex.solution));done()});
+  }
+
+  if(ex.type==='match'){
+    const sels=[...node.querySelectorAll('select')];
+    sels.forEach(s=>s.addEventListener('change',()=>s.closest('.match-row').classList.remove('right','wrong')));
+    $('.check',node).addEventListener('click',()=>{
+      if(sels.some(s=>!s.value)){fb('bad','Kies eerst voor elke regel een antwoord.');return}
+      let good=0;
+      sels.forEach((s,r)=>{const ok=s.value===ex.pairs[r].b,row=s.closest('.match-row');row.classList.toggle('right',ok);row.classList.toggle('wrong',!ok);if(ok)good++});
+      if(good===sels.length){fb('ok','<strong>Alles juist!</strong>');done()}
+      else{fb('bad',`<strong>${good} van de ${sels.length} juist.</strong> Pas de regels met een rode rand aan.`);showSolve()}
+    });
+    $('.solve',node).addEventListener('click',()=>{
+      sels.forEach((s,r)=>{s.value=ex.pairs[r].b;const row=s.closest('.match-row');row.classList.remove('wrong');row.classList.add('right')});
+      fb('info','Dit is de oplossing.');done();
+    });
+  }
+
+  if(ex.type==='open'){
+    const ta=$('textarea',node), b=$('.show',node);
+    ta.addEventListener('input',()=>{b.disabled=ta.value.trim().length<15});
+    b.addEventListener('click',()=>{fb('info','<strong>Vergelijk met je eigen antwoord.</strong> '+ex.model);done()});
+  }
+  return node;
+}
+
+function parseNum(s){
+  s=String(s).replace(/[€\s]/g,'').replace(/[a-z]/gi,'');
+  if(!s) return NaN;
+  if(s.includes(',')) s=s.replace(/\./g,'').replace(',','.');
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,'');
+  return Number(s);
+}
+
+/* ---------- eindtest ---------- */
+function renderTest(app){
+  const first=esc(S.name.split(/\s+/)[0]);
+  app.innerHTML=`
+<article class="col">
+  <p class="where">Bovenste verdieping, Directie</p>
+  <h1>Eindtest</h1>
+  <div class="mail">
+    <dl class="mail-head"><dt>Van</dt><dd>Marc Janssens, CEO</dd><dt>Aan</dt><dd>${esc(S.name)}</dd><dt>Onderwerp</dt><dd><strong>Klaar voor je diploma?</strong></dd></dl>
+    <div class="mail-body"><p>Dag ${first},</p><p>Je hebt op elke afdeling goed werk geleverd. Nu wil ik zien of je alles onthouden hebt. Beantwoord de 15 vragen hieronder. Met <strong>minstens ${PASS} juiste antwoorden</strong> ben je officieel beginnend salesmedewerker bij Nova Group.</p></div>
+  </div>
+  ${passed()?`<p class="tip">Je bent al geslaagd met ${S.test.score} op ${TEST.length}. <button type="button" class="btn ghost" id="toDip">Bekijk je diploma</button></p>`:''}
+  <h2>Vragen</h2>
+  <ol class="test">${TEST.map((t,i)=>`<li id="t${i}"><fieldset><legend>${esc(t.q)}</legend>${t.o.map((o,k)=>`<label class="choice"><input type="radio" name="q${i}" value="${k}"><span>${esc(o)}</span></label>`).join('')}</fieldset><p class="t-fb"></p></li>`).join('')}</ol>
+  <div class="ex-actions"><button type="button" class="btn" id="submitTest">Lever de test in</button></div>
+  <div class="result" id="result" aria-live="polite"></div>
+</article>`;
+  const toDip=$('#toDip'); if(toDip) toDip.addEventListener('click',()=>go({type:'diploma'}));
+  $('#submitTest').addEventListener('click',()=>{
+    const ans=TEST.map((_,i)=>{const c=document.querySelector(`input[name="q${i}"]:checked`);return c?+c.value:null});
+    const open=ans.filter(a=>a===null).length;
+    const res=$('#result');
+    if(open){res.innerHTML=`<p class="fb bad">Je hebt nog ${open} ${open===1?'vraag':'vragen'} open. Beantwoord alles voor je de test inlevert.</p>`;return}
+    let score=0;
+    TEST.forEach((t,i)=>{const ok=ans[i]===t.c;if(ok)score++;const li=$('#t'+i);li.classList.toggle('right',ok);li.classList.toggle('wrong',!ok);
+      $('.t-fb',li).innerHTML=ok?'<strong style="color:var(--ok)">Juist</strong>':`<strong style="color:var(--bad)">Fout.</strong> Het juiste antwoord is: ${esc(t.o[t.c])}`});
+    document.querySelectorAll('.test input').forEach(x=>x.disabled=true);
+    $('#submitTest').hidden=true;
+    const ok=score>=PASS;
+    if(ok&&(!S.test||!S.test.passed||score>S.test.score)){S.test={passed:true,score,date:new Date().toISOString()};save()}
+    renderTop();
+    res.innerHTML = ok
+      ? `<div class="promo" role="status"><h2>Proficiat, ${first}!</h2><p>Je scoorde <strong>${score} op ${TEST.length}</strong>. Je bent officieel beginnend salesmedewerker bij Nova Group.</p><button type="button" class="btn" id="dipBtn">Bekijk je diploma</button></div>`
+      : `<div class="fb bad"><p><strong>Je scoorde ${score} op ${TEST.length}.</strong> Je hebt er ${PASS} nodig. Bekijk hierboven welke vragen fout waren, lees de uitleg op die afdeling nog eens en probeer opnieuw.</p><button type="button" class="btn" id="retry">Maak de test opnieuw</button></div>`;
+    const d=$('#dipBtn'); if(d) d.addEventListener('click',()=>go({type:'diploma'}));
+    const r=$('#retry'); if(r) r.addEventListener('click',()=>go({type:'test'}));
+    res.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+}
+
+/* ---------- diploma ---------- */
+function renderDiploma(app){
+  const d=new Date(S.test.date).toLocaleDateString('nl-BE',{day:'numeric',month:'long',year:'numeric'});
+  app.innerHTML=`
+<h1 class="sr">Jouw diploma</h1>
+<div class="dip-actions no-print">
+  <button type="button" class="btn" id="printBtn">Druk je diploma af</button>
+  <button type="button" class="btn ghost" id="backBtn">Terug naar de eindtest</button>
+</div>
+<div class="diploma" id="diploma">
+  <div class="dip-brand"><i aria-hidden="true"></i>nova group</div>
+  <p class="dip-small">De directie van Nova Group verklaart dat</p>
+  <p class="dip-name">${esc(S.name)}</p>
+  <p class="dip-small">met succes de opleiding heeft afgerond en voortaan werkt als</p>
+  <h2 class="dip-title">Beginnend salesmedewerker</h2>
+  <ul class="dip-list">
+    ${FLOORS.map(f=>`<li><span><strong>${esc(f.dept)}:</strong> ${esc(f.title.toLowerCase())}</span></li>`).join('')}
+    <li><span><strong>Eindtest:</strong> ${S.test.score} op ${TEST.length}</span></li>
+  </ul>
+  <div class="dip-foot">
+    <div>Datum<br><strong>${d}</strong></div>
+    <div class="seal">Nova<br>Group<br>erkend</div>
+    <div>Voor de directie<br><span class="sig">M. Janssens</span></div>
+  </div>
+</div>
+<p class="no-print" style="color:var(--muted);margin-top:1.4rem">Lukt afdrukken niet? Neem dan een schermafbeelding van je diploma.</p>`;
+  $('#printBtn').addEventListener('click',()=>{try{window.print()}catch(e){}});
+  $('#backBtn').addEventListener('click',()=>go({type:'test'}));
+}
+
+/* ---------- start ---------- */
+$('#brand').addEventListener('click',e=>{e.preventDefault();go(S.name?firstOpenFloor():{type:'start'})});
+const resetBtn=$('#reset');let armed=false;
+resetBtn.addEventListener('click',()=>{
+  if(!armed){armed=true;resetBtn.textContent='Klik nog eens om alles te wissen';setTimeout(()=>{armed=false;resetBtn.textContent='Alles wissen en opnieuw beginnen'},4000);return}
+  S={name:'',done:{},test:null};save();armed=false;resetBtn.textContent='Alles wissen en opnieuw beginnen';go({type:'start'});
+});
+view = S.name?firstOpenFloor():{type:'start'};
+render();
+</script>
+</body>
+</html>
